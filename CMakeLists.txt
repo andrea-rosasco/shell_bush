@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.3)
-project(bush_minus_minus_full)
+project(shell_bush)
 
 find_package(FLEX)
 find_package(BISON)
