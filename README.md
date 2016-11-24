@@ -30,19 +30,33 @@ of a non-empty sequence of:
 A simple example session of bush-- is the following:
 
 bush-- $ @set foo=SET
+
 bush-- $ @set foo=${foo}'2015/2016'
+
 bush-- $ echo $foo
+
 SET2015/2016
+
 bush-- $ ls -l 
+
 total 104
+
 -rwxrwxr-x 1 gio gio 93904 nov  7 16:12 bmm
+
 drwxrwxr-x 2 gio gio  4096 nov  7 15:47 Debug
+
 bush-- $ ls -l | grep ebu > foobar
+
 bush-- $ cat < foobar
+
 drwxrwxr-x 2 gio gio  4096 nov  7 15:47 Debug
+
 bush-- $ @cd Debug
+
 bush-- $ pwd
+
 [...]/bin/Debug
+
 bush-- $ 
 
 
