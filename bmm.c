@@ -50,6 +50,14 @@ void make_sure_PWD_is_set(struct var_table *vt)
 	/* la variabile PWD non era presente; crearla e inizializzarla
 	 * al valore restituito dalla system call getcwd() */
 /*** TO BE DONE START ***/
+	int cwddim=2;
+	cwd=my_malloc(cwddim);
+	while(getcwd(cwd, cwddim) == NULL){
+		cwddim*=2;
+		free(cwd);
+		cwd=my_malloc(cwddim);
+	}	
+	vt_set_value(vt, PWD, cwd);
 /*** TO BE DONE END ***/
 
 }
@@ -69,9 +77,9 @@ void make_sure_HOME_is_set(struct var_table *vt)
 int main()
 {
 	void lexer_loop(struct shell *sh); /* defined inside lexer.l */
-	struct shell *sh = sh_new();
-	struct var_table *vt = sh_get_var_table(sh);
-	inject_environment_into_vartable(vt);
+	struct shell *sh = sh_new();/*environment a null struct var_tabele con un array di 8 struct var*/
+	struct var_table *vt = sh_get_var_table(sh);/*salva il puntatore alla var table dalla shell*/
+	inject_environment_into_vartable(vt);//carica l'environ
 	make_sure_PWD_is_set(vt);
 	make_sure_PATH_is_set(vt);
 	make_sure_HOME_is_set(vt);

@@ -38,6 +38,13 @@ static void free_envp(char **envp)
 	/* richiamare la funzione free per rilasciare la memoria
 	 * allocata per l'ambiente envp */
 /*** TO BE DONE START ***/
+	if(envp==NULL)
+		return;
+	char** tmp = envp;
+	for(;*envp; ++envp){
+		free(*envp);
+	}
+	free(tmp);
 /*** TO BE DONE END ***/
 }
 
